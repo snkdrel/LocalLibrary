@@ -40,6 +40,12 @@ AuthorSchema
     return this.date_of_death ? DateTime.fromJSDate(this.date_of_death).toLocaleString(DateTime.DATE_MED) : '';
 });
 
+AuthorSchema
+  .virtual('lifespan')
+  .get(function () {
+    return this.date_of_birth_formatted + ' - ' + this.date_of_death_formatted;
+  });
+
 // Virtual for author's URL
 AuthorSchema
   .virtual('url')
